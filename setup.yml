@@ -1,0 +1,18 @@
+---
+# Setup LAMP Stack
+- name: Install LAMP stack
+  hosts: test
+  tasks:
+    - name: Install snapd
+      become: yes
+      apt:
+        name: snapd
+        state: present
+        update_cache: yes
+
+    - name: Install microk8s
+      become: yes
+      snap:
+        name: microk8s
+        classic: yes
+
