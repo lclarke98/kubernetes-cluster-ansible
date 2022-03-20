@@ -1,5 +1,5 @@
 ---
-# Setup LAMP Stack
+# Setup kubernetes
 - name: Install LAMP stack
   hosts: test
   tasks:
