@@ -1,7 +1,7 @@
 ---
 # Setup kubernetes
-- name: Install LAMP stack
-  hosts: test
+- name: Install microk8s
+  hosts: kubernetes
   tasks:
     - name: Disable swap
       become: yes
@@ -14,9 +14,16 @@
         state: present
         update_cache: yes
 
+    - name: Install Kernal modules
+      become: yes
+      apt:
+        name: linux-modules-extra-raspi
+        state: present
+        update_cache: yes
+
     - name: Install microk8s
       become: yes
       snap:
         name: microk8s
         classic: yes
-
+        channel: 1.25
